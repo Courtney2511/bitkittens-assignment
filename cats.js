@@ -1,5 +1,10 @@
 $(document).ready(function(){
   $('button').click(function(event){
-    console.log("let's get some kittehs!!!!");
+    $.ajax({
+      url: 'http://bitkittens.herokuapp.com/cats.json',
+      method: 'GET',
+      data: { },
+      dataType: 'json'
+    });
   });
 });
