@@ -1,6 +1,5 @@
-$(document).ready(function(){
-
-  $('button').click(function(event){
+$(document).ready(function() {
+  $('button').click(function(event) {
     $.ajax({
       url: 'http://bitkittens.herokuapp.com/cats.json',
       method: 'GET',
@@ -9,14 +8,14 @@ $(document).ready(function(){
     }).done(function(responseData){
       var kittenJSON = responseData;
       var kittenList = kittenJSON["cats"];
-      var catBox1 = document.createElement('img');
-      cat = kittenList[0];
-      console.log(cat.photo);
-      $('#cat1').append(catBox1);
-      $('#cat1 img').attr('src', cat.photo);
 
-
+      for(i=0; i<3; i++) {
+        var catBox = document.createElement('img');
+        var cat = kittenList[i];
+        $('#cat' + (i+1)).empty();
+        $('#cat' + (i+1)).append(catBox);
+        catBox.src = cat.photo;
+      }
     });
   });
-
 });
